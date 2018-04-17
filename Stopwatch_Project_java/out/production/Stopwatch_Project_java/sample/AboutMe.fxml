@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="393.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller3">
+   <children>
+      <Label layoutX="42.0" layoutY="44.0" prefHeight="32.0" prefWidth="151.0" text="Karol Bzowski" textAlignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="76.0" text="Informatyka Stosowana">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="97.0" text="WiMiIP" textFill="#615d5d">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="image" fitHeight="267.0" fitWidth="330.0" layoutX="232.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" />
+      
+   </children>
+</AnchorPane>
