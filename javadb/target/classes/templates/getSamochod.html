@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" type="text/css" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Product</title>
+</head>
+<body>
+<div align="left">
+    <h1>Samochody</h1><br>
+</div>
+<table class="table" align="center">
+
+
+    <tr th:each="prod : ${samochod}">
+        <table align="center">
+                <tr>
+                    <th>Samochod id</th>
+                    <th>Nazwa</th>
+                    <th>opis</th>
+                    <th>Producent ID</th>
+                    <th>Model ID</th>
+                </tr>
+
+            <tr>
+                <td th:text="${prod.idSamochod}" align="center">Index</td>
+                <td th:text="${prod.nazwa}" align="center">Nazwa</td>
+                <td th:text="${prod.opis}" align="center">opis</td>
+                <td th:text="${prod.idProducent}" align="center">producent id</td>
+                <td th:text="${prod.idModel}" align="center">model id</td>
+            </tr>
+        </table>
+    </tr>
+    <tr>
+    <td colspan="5">
+        <form method="GET" action="/panel" enctype="multipart/form-data">
+            <input type="submit" value="Back">
+        </form>
+    </td>
+    </tr>
+</table>
+</body>
+</html>

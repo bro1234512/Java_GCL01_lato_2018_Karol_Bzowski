@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" type="text/css" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Data</title>
+</head>
+<body>
+<div align="center">
+    <h1>Show Data</h1><br>
+</div>
+<table class="table" align="center">
+
+    <tr th:each="data : ${data}">
+        <table align="center">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+
+            <tr>
+                <td th:text="${data.id}" align="center">Index</td>
+                <td th:text="${data.nazwa}" align="center">Index</td>
+                <td th:text="${data.opis}" align="center">Index</td>
+            </tr>
+        </table>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <form method="GET" action="/panel" enctype="multipart/form-data">
+                <input type="submit" value="Back">
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

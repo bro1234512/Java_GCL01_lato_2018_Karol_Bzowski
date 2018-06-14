@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" type="text/css" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel</title>
+</head>
+<body>
+
+<div style="text-align: center;">
+    <h1>Panel</h1><br>
+</div>
+
+<table class="table" align="center">
+
+    <!-- 1 row -->
+    <tr>
+        <th>Add product</th>
+        <th>Delete product</th>
+        <th>Get product</th>
+        <th>Update product</th>
+        <th>Show products</th>
+    </tr>
+
+
+    <!-- 2 row -->
+    <tr>
+        <td>
+            <form method="POST" action="#" th:action="@{/addSamochod}" th:object="${app}">
+                <div class="form">
+                    Nazwa<span style="color: red; ">*</span>: <input type="text" name="nazwa" required><br>
+                    Opis:<input type="text" name="opis"><br>
+
+                    Producent:
+                    <select th:field="*{producent.idProducent}">
+                        <option value="">--</option>
+                        <option th:each="cat : ${producentList}"
+                                th:value="${cat.idProducent}"
+                                th:text="${cat.nazwa}">Option</option>
+                    </select><br>
+
+
+                    Model:
+                    <select th:field="*{model.idModel}">
+                    <option value="">--</option>
+                    <option th:each="prod : ${modelList}"
+                            th:value="${prod.idModel}"
+                            th:text="${prod.nazwa}">Option</option>
+                </select><br>
+
+                    <input type="submit" value="ADD">
+                </div>
+            </form>
+        </td>
+
+        <td>
+            <form method="POST" action="/deleteSamochodById" enctype="multipart/form-data">
+                ID<span style="color: red; ">*</span>: <input type="number" name="id" required><br>
+                <input type="submit" value="DELETE">
+            </form>
+        </td>
+
+        <td>
+            <form method="POST" action="/getSamochodById" enctype="multipart/form-data">
+                ID<span style="color: red; ">*</span>: <input type="number" name="id" required><br>
+                <input type="submit" value="GET">
+            </form>
+        </td>
+
+        <td>
+            <form method="POST" action="#" th:action="@{/updateSamochod}" th:object="${app}">
+                <div class="form">
+                    ID<span style="color: red; ">*</span>: <input type="text" name="idSamochod" required><br>
+                    Nazwa<span style="color: red; ">*</span>: <input type="text" name="nazwa" required><br>
+                    Opis:<input type="text" name="opis"><br>
+
+                    Producent:
+                    <select th:field="*{producent.idProducent}">
+                        <option value="">--</option>
+                        <option th:each="cat : ${producentList}"
+                                th:value="${cat.idProducent}"
+                                th:text="${cat.nazwa}">Option</option>
+                    </select><br>
+
+
+                    Model:
+                    <select th:field="*{model.idModel}">
+                        <option value="">--</option>
+                        <option th:each="prod : ${modelList}"
+                                th:value="${prod.idModel}"
+                                th:text="${prod.nazwa}">Option</option>
+                    </select><br>
+
+                    <input type="submit" value="UPDATE">
+                </div>
+            </form>
+        </td>
+
+        <td>
+            <form method="POST" action="/showSamochods" enctype="multipart/form-data">
+                <input type="submit" value="SHOW">
+            </form>
+        </td>
+    </tr>
+
+
+
+    <!-- 3 row -->
+    <tr>
+        <td></td>
+        <td></td>
+        <td>
+            <form method="POST" action="/getSamochodByName" enctype="multipart/form-data">
+                Nazwa<span style="color: red; ">*</span>: <input type="text" name="nazwa" required><br>
+                <input type="submit" value="GET">
+            </form>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+
+
+    <!-- 4 row -->
+    <tr>
+        <th>Dodaj Producenta</th>
+        <th>Usun Producenta</th>
+        <th></th>
+        <td></td>
+        <th>Pokaż Producentów</th>
+    </tr>
+
+
+    <!-- 5 row -->
+    <tr>
+        <td>
+            <form method="POST" action="/addProducent" enctype="multipart/form-data">
+                Nazwa<span style="color: red; ">*</span>: <input type="text" name="nazwa" required><br>
+                Opis:<input type="text" name="opis"><br>
+                <input type="submit" value="ADD">
+            </form>
+        </td>
+        <td>
+            <form method="POST" action="/deleteProducentById" enctype="multipart/form-data">
+                ID<span style="color: red; ">*</span>: <input type="number" name="idProducent" required><br>
+                Pusty<span style="color: red; ">*</span>:
+                <select name="only_empty">
+                    <option value="true">true</option>
+                    <option value="false">false</option>
+                </select><br>
+                <input type="submit" value="DELETE">
+            </form>
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+            <form method="POST" action="/showProducentow" enctype="multipart/form-data">
+                <input type="submit" value="SHOW">
+            </form>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Dodaj Model</th>
+        <th>Usun Model</th>
+        <th></th>
+        <td></td>
+        <th>Pokaż Modele</th>
+    </tr>
+
+
+    <!-- 6 row -->
+    <tr>
+        <td>
+            <form method="POST" action="/addModel" enctype="multipart/form-data">
+               Nazwa<span style="color: red; ">*</span>: <input type="text" name="nazwa" required><br>
+               Opis:<input type="text" name="opis"><br>
+                <input type="submit" value="ADD">
+            </form>
+        </td>
+        <td>
+            <form method="POST" action="/deleteModelById" enctype="multipart/form-data">
+                ID<span style="color: red; ">*</span>: <input type="number" name="idModel" required><br>
+                Pusty<span style="color: red; ">*</span>:
+                <select name="only_empty">
+                    <option value="true">true</option>
+                    <option value="false">false</option>
+                </select><br>
+                <input type="submit" value="DELETE">
+            </form>
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+            <form method="POST" action="/showModele" enctype="multipart/form-data">
+                <input type="submit" value="SHOW">
+            </form>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Pokaż dane
+        </th>
+        <th></th>
+        <th>
+            Pobierz dane
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    <tr>
+        <td>
+            <form method="POST" action="/addData" enctype="multipart/form-data">
+                ID<span style="color: red; ">*</span>: <input type="number" name="id" required><br>
+                nazwa:<input type="text" name="nazwa"><br>
+                opis:<input type="text" name="opis"><br>
+                <input type="submit" value="ADD">
+            </form>
+        </td>
+        <td></td>
+        <td>
+            <form method="POST" action="/showData" enctype="multipart/form-data">
+                ID<span style="color: red; ">*</span>: <input type="number" name="id" required><br>
+                <input type="submit" value="SHOW">
+            </form>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+</body>
+</html>
