@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/style.css"/>
+    <script>
+
+        function DeleteAction(pictureId) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("DELETE", `http://localhost:8080/gallery/${pictureId}`, true);
+        xhttp.send();
+        location.reload();
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <table class="table">
+
+        <tbody>
+
+        <tr th:each="picture : ${images}">
+            <th><img th:src="@{${'img/' + picture.name}}" class="image" /></th>
+            <td th:text="${picture.index}">Index</td>
+            <td th:text="${picture.name}">Picture Name</td>
+            <td th:text="${picture.resolution}">Picture Resolution</td>
+            <td th:text="${picture.size}">Picture Size</td>
+            <td th:text="${picture.date}">Picture Date</td>
+            <td>
+                <button type="button" th:onclick="'DeleteAction(\'' + ${picture.name} + '\');'">Usun</button>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
